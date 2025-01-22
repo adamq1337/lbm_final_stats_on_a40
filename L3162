@@ -1,0 +1,50 @@
+MLUPs: 927.6868759744551
+Total time: 10.777606387389824
+Time exporting: 0.6062931781634688
+*************************************************
+iter:   1100, Mass check: 9998244.0
+        Time boundaries       0.1503265169
+        Time streaming        0.2774349023
+        Time macroscopic      1.1390176916
+        Time equilibrium      0.0087002378
+        Time source_force     0.0009520769
+        Time collision        0.0062729975
+        Time sum              1.5827044230
+MLUPs: 889.7723968033463
+Total time: 12.360541234491393
+Time exporting: 0.5803915439173579
+*************************************************
+iter:   1200, Mass check: 9998244.0
+        Time boundaries       0.1524426076
+        Time streaming        0.2812477411
+        Time macroscopic      1.1611719807
+        Time equilibrium      0.0087761406
+        Time source_force     0.0009634946
+        Time collision        0.0063063898
+        Time sum              1.6109083544
+MLUPs: 858.7289957759613
+Total time: 13.971687061944976
+Traceback (most recent call last):
+  File "/cephyr/users/adapers/Vera/lbm_final/lbm/util/export.py", line 25, in write_vtk
+    self.__write_points()
+  File "/cephyr/users/adapers/Vera/lbm_final/lbm/util/export.py", line 60, in __write_points
+    coordinate.byteswap().tofile(self._file, sep="")
+OSError: [Errno 122] Disk quota exceeded
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/cephyr/users/adapers/Vera/lbm_final/samples/lid_driven_cavity_2d.py", line 82, in <module>
+    main()
+  File "/cephyr/users/adapers/Vera/lbm_final/samples/lid_driven_cavity_2d.py", line 61, in main
+    sim.run(max_it=5000, mod_it=100)
+  File "/cephyr/users/adapers/Vera/lbm_final/lbm/simulation.py", line 27, in run
+    status = self._save_it(it)
+             ^^^^^^^^^^^^^^^^^
+  File "/cephyr/users/adapers/Vera/lbm_final/lbm/simulation.py", line 43, in _save_it
+    self._export_vtk(f"{self._output_directory}/{self._application_name}-{it}.vtk")
+  File "/cephyr/users/adapers/Vera/lbm_final/lbm/simulation.py", line 68, in _export_vtk
+    self._export.write_vtk(filename)
+  File "/cephyr/users/adapers/Vera/lbm_final/lbm/util/export.py", line 23, in write_vtk
+    with open(filename, 'wb') as self._file:
+OSError: [Errno 122] Disk quota exceeded
